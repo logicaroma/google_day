@@ -135,7 +135,7 @@ function detectPoseInRealTime(video, net) {
         let minPartConfidence;
 
         const pose = await net.estimatePoses(video, {
-            flipHorizontal: false,
+            flipHorizontal: true,
             decodingMethod: "single-person"
         });
         poses = poses.concat(pose);
