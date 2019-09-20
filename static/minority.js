@@ -167,11 +167,10 @@ Rhythms.prototype.play = function(sound) {
     var startTime = context.currentTime + 0.100;
     var tempo = 80; // BPM (beats per minute)
     var eighthNoteTime = (60 / tempo) / 2;
-    var time = startTime + bar * 8 * eighthNoteTime;
+    var time = startTime + eighthNoteTime;
     switch (sound) {
         case 'kick':
             playSound(this.kick, time);
-
             break;
         case 'snare':
             playSound(this.snare, time);
