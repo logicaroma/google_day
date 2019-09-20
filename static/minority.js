@@ -128,6 +128,9 @@ function detectPoseInRealTime(video, net) {
 
     canvas.width = videoWidth;
     canvas.height = videoHeight;
+    let playingKick = false;
+    let playingHihat = false;
+    let playingSnare = false;
 
     async function poseDetectionFrame() {
         let poses = [];
@@ -149,12 +152,36 @@ function detectPoseInRealTime(video, net) {
         ctx.translate(-videoWidth, 0);
 
         ctx.restore();
-
         poses.forEach(({ score, keypoints }) => {
-            let wrist = keypoints.find(({ part }) => part === "leftWrist");
-            if (wrist.position.x <= 150 && wrist.position.y <= 150) {
-                console.log("kick it");
-                rhythms.play("kick");
+            let wristL = keypoints.find(({ part }) => part === "leftWrist");
+            if (wristL.position.x <= 150) {
+                if (!playingKick) {
+                    console.log("kick it");
+                    rhythms.play("kick");
+                    playingKick = true;
+                }
+            } else {
+                playingKick = false;
+            }
+            let wristR = keypoints.find(({ part }) => part === "rightWrist");
+            if (wristR.position.x >= 450) {
+                if (!playingHihat) {
+                    console.log("hihat it");
+                    rhythms.play("hihat");
+                    playingHihat = true;
+                }
+            } else {
+                playingHihat = false;
+            }
+            let leftAnkle = keypoints.find(({ part }) => part === "leftAnkle");
+            if (leftAnkle.position.x <= 150) {
+                if (!playingSnare) {
+                    console.log("snare it");
+                    rhythms.play("snare");
+                    playingSnare = true;
+                }
+            } else {
+                playingSnare = false;
             }
 
             drawKeypoints(keypoints, minPartConfidence, ctx);
@@ -182,6 +209,7 @@ Rhythms.prototype.play = function(sound) {
     var tempo = 80; // BPM (beats per minute)
     var eighthNoteTime = 60 / tempo / 2;
     var time = startTime + eighthNoteTime;
+
     switch (sound) {
         case "kick":
             playSound(this.kick, time);
