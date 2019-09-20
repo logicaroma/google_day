@@ -12,6 +12,7 @@ app.use(express.static(path.join(__dirname, './node_modules/face-api.js/dist')))
 
 app.get('/', (req, res) => res.redirect('/welcome'))
 app.get('/welcome', (req, res) => res.sendFile(path.join(viewsDir, 'welcome.html')))
+app.get('/kick.wav', (req, res) => res.sendFile(path.join(__dirname, './static/sounds/kick.wav')))
 
 app.get('/training', (req, res) => res.sendFile(path.join(viewsDir, 'training.html')))
 
