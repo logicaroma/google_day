@@ -16,6 +16,7 @@ app.get('/welcome', (req, res) => res.sendFile(path.join(viewsDir, 'welcome.html
 app.get('/training', (req, res) => res.sendFile(path.join(viewsDir, 'training.html')))
 
 app.get('/comment', (req, res) => res.sendFile(path.join(viewsDir, 'comment.html')))
+app.get('/minority', (req, res) => res.sendFile(path.join(viewsDir, 'minority.html')))
 
 app.get('/pose', (req, res) => res.sendFile(path.join(viewsDir, 'pose.html')))
 

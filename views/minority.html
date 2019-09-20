@@ -20,7 +20,6 @@
             <a href="/training" class="item">Training</a>
 
             <a href="/comment" class="item">Comment</a>
-            <a href="/minority" class="item">Minority</a>
 
             <a href="/pose" class="item">Pose</a>
 
@@ -36,10 +35,21 @@
         </div>
     </div>
 
+    <div class="ui active dimmer" id="loader">
+        <div class="ui indeterminate text loader">Loading model</div>
+    </div>
     <div class="ui main text container">
-        <h1 class="ui header">Face detection demo</h1>
-        <p>This is a veeery basic example how you can use neural nets in your app.</p>
-        <p>Go ahead and choose correct option from nav bar</p>
+        <div id='main'>
+            <video id="video" playsinline>
+        <!-- style=" -moz-transform: scaleX(-1);
+          -o-transform: scaleX(-1);
+          -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+          display: none;
+          " -->
+      </video>
+            <canvas id="output" />
+        </div>
     </div>
 
 
@@ -47,12 +57,9 @@
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/toxicity"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
 
-    <script src="/face-api.js"></script>
-
-    <script src="/scripts.js"></script>
+    <script src="/minority.js"></script>
 </body>
 
 </html>
