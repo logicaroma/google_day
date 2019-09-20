@@ -1,5 +1,5 @@
 body {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   height: auto;
 }
 
@@ -11,10 +11,15 @@ body {
   margin-top: 7em;
 }
 
-.ui.comments .comment .avatar img, .ui.comments .comment img.avatar {
+.ui.comments .comment .avatar img,
+.ui.comments .comment img.avatar {
   height: auto;
 }
-
+#video {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 #output {
   position: absolute;
   top: 0;
@@ -23,4 +28,35 @@ body {
 
 #main {
   position: relative;
+}
+
+.controls {
+  position: relative;
+  z-index: 2;
+
+  height: 500px;
+  top: 0;
+  left: 0;
+}
+.controls button {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+.hihat {
+  top: 0;
+  left: 0;
+}
+.snare {
+  top: 0;
+  right: 0;
+}
+.drum {
+  bottom: 0;
+  left: 0;
+}
+.cowbell {
+  bottom: 0;
+  right: 0;
 }
