@@ -173,10 +173,10 @@ function detectPoseInRealTime(video, net) {
             } else {
                 playingHihat = false;
             }
-            let leftAnkle = keypoints.find(({ part }) => part === "leftAnkle");
-            if (leftAnkle.position.x <= 150) {
+            let leftKnee = keypoints.find(({ part }) => part === "leftKnee");
+            if (leftKnee.position.x <= 150) {
                 if (!playingSnare) {
-                    console.log("snare it");
+                    console.log("snare it", leftKnee);
                     rhythms.play("snare");
                     playingSnare = true;
                 }
@@ -216,11 +216,9 @@ Rhythms.prototype.play = function(sound) {
             break;
         case "snare":
             playSound(this.snare, time);
-
             break;
         case "hihat":
             playSound(this.hihat, time);
-
             break;
 
         default:
